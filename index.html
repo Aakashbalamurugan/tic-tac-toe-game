@@ -2,25 +2,104 @@
 <html>
   <head>
     <title>Tic-Tac-Toe</title>
-    <style>
-      .cell {
-        width: 100px;
-        height: 100px;
-        border: 1px solid #000;
-        display: inline-block;
-        text-align: center;
-        line-height: 100px;
-        font-size: 40px;
-        cursor: pointer;
-      }
-      #boardContainer{
-width:  310px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="boardContainer"></div>
+<style>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 10px;
+      margin: 40px auto 20px;
+      width: 330px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      background-color: #1e1e1e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s, opacity 0.4s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+    }
+
+    .cell:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+
+    .cell.taken {
+      cursor: not-allowed;
+    }
+
+    .cell.x {
+      color: #00f7ff;
+      text-shadow: 0 0 10px #00f7ff;
+    }
+
+    .cell.o {
+      color: #ff4f81;
+      text-shadow: 0 0 10px #ff4f81;
+    }
+
+    #status {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    #status.win {
+      color: #00ff6a;
+      text-shadow: 0 0 10px #00ff6a;
+    }
+
+    .restart-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .restart-btn:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Tic Tac Toe: No Draws Allowed</h1>
+<div class="board" id="board"></div>
+<div id="status">Player X's Turn</div>
+<button class="restart-btn" onclick="restartGame()">Restart</button>
     <script src="index.js"></script>
   </body>
 </html>
